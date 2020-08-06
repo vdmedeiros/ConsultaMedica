@@ -55,7 +55,6 @@ namespace ConsultaMedica.CorpoClinico.Application.Commands
                 _agendaMedicaRepository.AdicionarAgendamentoPaciente(agendamentoPaciente);                
             }            
 
-            //pedido.AdicionarEvento(new PedidoItemAdicionadoEvent(pedido.ClienteId, pedido.Id, message.ProdutoId, message.Nome, message.ValorUnitario, message.Quantidade));
             return await _agendaMedicaRepository.UnitOfWork.Commit();
         }
 
