@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Events\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConsultaMedica.Core\ConsultaMedica.Core.csproj" />
+    <ProjectReference Include="..\CorpoClinico.Domain\ConsultaMedica.CorpoClinico.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
