@@ -50,10 +50,11 @@ namespace ConsultaMedica.CorpoClinico.API.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPut()]
+        [Route("AgendarConsulta")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> AgendarConsulta([FromBody] AgendaConsultaViewModel agendaMedicaVM)
+        public async Task<IActionResult> Put([FromBody] AgendaConsultaViewModel agendaMedicaVM)
         {
             var command = new AgendarConsultaCommand(agendaMedicaVM.MedicoId, agendaMedicaVM.PacienteId, agendaMedicaVM.DataInicioConsulta);
             await _mediatorHandler.EnviarComando(command);

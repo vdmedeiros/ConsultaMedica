@@ -21,7 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pacientes", "Pacientes", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{BCF461C6-D811-451B-9A8D-4834FFAC4F36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultaMedica.Core", "src\ConsultaMedica.Core\ConsultaMedica.Core.csproj", "{A81F4249-8924-4CF8-80B7-5F3A59D36114}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsultaMedica.Core", "src\ConsultaMedica.Core\ConsultaMedica.Core.csproj", "{A81F4249-8924-4CF8-80B7-5F3A59D36114}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsultaMedica.Pacientes.API", "src\ConsultaMedica.Pacientes.API\ConsultaMedica.Pacientes.API.csproj", "{D6F40870-2811-46B9-B61C-AEB17B96C24B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsultaMedica.Pacientes.Application", "src\ConsultaMedica.Pacientes.Application\ConsultaMedica.Pacientes.Application.csproj", "{90F99148-4240-4E43-B1DC-544B53AA7250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultaMedica.CorpoClinico.Application.Tests", "tests\ConsultaMedica.CorpoClinico.Application.Tests\ConsultaMedica.CorpoClinico.Application.Tests.csproj", "{AE12C508-BBCA-4B5B-9087-E7160367B2E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +55,18 @@ Global
 		{A81F4249-8924-4CF8-80B7-5F3A59D36114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A81F4249-8924-4CF8-80B7-5F3A59D36114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A81F4249-8924-4CF8-80B7-5F3A59D36114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6F40870-2811-46B9-B61C-AEB17B96C24B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6F40870-2811-46B9-B61C-AEB17B96C24B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6F40870-2811-46B9-B61C-AEB17B96C24B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6F40870-2811-46B9-B61C-AEB17B96C24B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90F99148-4240-4E43-B1DC-544B53AA7250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90F99148-4240-4E43-B1DC-544B53AA7250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90F99148-4240-4E43-B1DC-544B53AA7250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90F99148-4240-4E43-B1DC-544B53AA7250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE12C508-BBCA-4B5B-9087-E7160367B2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE12C508-BBCA-4B5B-9087-E7160367B2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE12C508-BBCA-4B5B-9087-E7160367B2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE12C508-BBCA-4B5B-9087-E7160367B2E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +81,9 @@ Global
 		{EC83E0F9-9594-44A1-89DE-692B1D0C63F3} = {932CFAAF-29EE-4AA4-B296-7AACD5A30B35}
 		{BCF461C6-D811-451B-9A8D-4834FFAC4F36} = {932CFAAF-29EE-4AA4-B296-7AACD5A30B35}
 		{A81F4249-8924-4CF8-80B7-5F3A59D36114} = {BCF461C6-D811-451B-9A8D-4834FFAC4F36}
+		{D6F40870-2811-46B9-B61C-AEB17B96C24B} = {EC83E0F9-9594-44A1-89DE-692B1D0C63F3}
+		{90F99148-4240-4E43-B1DC-544B53AA7250} = {EC83E0F9-9594-44A1-89DE-692B1D0C63F3}
+		{AE12C508-BBCA-4B5B-9087-E7160367B2E1} = {F66242DD-9D7A-4FAE-809A-73C05BD1DD2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D92D7AC8-F24A-4933-A275-237B93DFE2C0}

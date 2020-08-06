@@ -1,25 +1,21 @@
-using ConsultaMedica.Core.Communication.Mediator;
-using ConsultaMedica.CorpoClinico.Application.Commands;
-using ConsultaMedica.CorpoClinico.Data;
-using ConsultaMedica.CorpoClinico.Domain;
-using MediatR;
-using FluentValidation.AspNetCore;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
+using ConsultaMedica.Core;
+using ConsultaMedica.Pacientes.Application.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Globalization;
-using Microsoft.Extensions.Options;
-using ConsultaMedica.Core;
-using ConsultaMedica.CorpoClinico.Application.Queries;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Serilog;
-using ConsultaMedica.Core.Communication.Messages.Notications;
 
-namespace ConsultaMedica.CorpoClinico.API
+namespace ConsultaMedica.Pacientes.API
 {
     public class Startup
     {
@@ -32,46 +28,31 @@ namespace ConsultaMedica.CorpoClinico.API
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-
-            services.Configure<ConfigurationSettings>(Configuration.GetSection("Configuration"));
-            services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
-
-            services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<ConfigurationSettings>>().Value);
-
-            services.AddDbContext<CorpoClinicoContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddMediatR(typeof(Startup));
-
+        {   
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Serviço de Consulta Médica API", Version = "v1" });
             });
 
             services.AddMvc()
-                .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddScoped<IMediatorHandler, MediatorHandler>();
-            services.AddScoped<IAgendaMedicaRepository, AgendaMedicaRepository>();
-            services.AddScoped<CorpoClinicoContext>();
-            services.AddScoped<IRequestHandler<AgendarConsultaCommand, bool>, AgendaMedicaCommandHandler>();
-            services.AddScoped<IAgendaMedicaQueries, AgendaMedicaQueries>();
-            
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
+            services.Configure<ConfigurationSettings>(Configuration.GetSection("Configuration"));
+            services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<ConfigurationSettings>>().Value);
+
+            services.AddScoped<IAgendaPacienteQueries, AgendaPacienteQueries>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, CorpoClinicoContext corpoClinicoContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+
             var cultureInfo = new CultureInfo("pt-BR");
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
             loggerFactory.AddSerilog();
-
-            corpoClinicoContext.Database.EnsureCreated();
 
             if (env.IsDevelopment())
             {

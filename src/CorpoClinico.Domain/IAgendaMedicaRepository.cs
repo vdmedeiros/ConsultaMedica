@@ -10,7 +10,6 @@ namespace ConsultaMedica.CorpoClinico.Domain
     {
         void Adicionar(AgendaMedica agendaMedica);
         void AdicionarAgendamentoPaciente(AgendamentoPaciente agendamentoPaciente);
-        Task<AgendaMedica> ObterAgendaMedica(Guid medicoId);
-        Task<List<AgendamentoPaciente>> ObterPorPacienteId(Guid pacienteId);
+        Task<AgendaMedica> ObterAgendaMedica(Guid medicoId);        
     }
 }

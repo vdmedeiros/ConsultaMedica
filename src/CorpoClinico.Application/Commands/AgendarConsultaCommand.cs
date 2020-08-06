@@ -25,23 +25,28 @@ namespace ConsultaMedica.CorpoClinico.Application.Commands
     }
     public class AgendarConsultaValidation : AbstractValidator<AgendarConsultaCommand>
     {
+        public static string IdMedicoErroMsg => "Id do médico inválido";
+        public static string IdPacienteErroMsg => "Id do paciente inválido";
+        public static string DataInicioConsultaMsg => "Data início da consulta não foi informada";
+        public static string DataInicioConsultaMinMsg => "Data início da consulta deve ser maior que data atual";
+
         public AgendarConsultaValidation()
         {
             RuleFor(c => c.MedicoId)
                 .NotEqual(Guid.Empty)
-                .WithMessage("Id do médico inválido");
+                .WithMessage(IdMedicoErroMsg);
 
             RuleFor(c => c.PacienteId)
                 .NotEqual(Guid.Empty)
-                .WithMessage("Id do paciente inválido");
+                .WithMessage(IdPacienteErroMsg);
 
             RuleFor(c => c.DataInicioConsulta)
                 .NotEmpty()
-                .WithMessage("Data início da consulta não foi informada");
+                .WithMessage(DataInicioConsultaMsg);
 
             RuleFor(c => c.DataInicioConsulta)
                 .GreaterThan(DateTime.Now)
-                .WithMessage("Data início da consulta deve ser maior que data atual");
+                .WithMessage(DataInicioConsultaMinMsg);
 
         }
     }
